@@ -1,0 +1,5 @@
+export { IUpdateProduct } from './IUpdateProduct'
+export { IReadByCategory } from './IReadByCategory'
+export { IDeleteProduct } from './IDeleteProduct'
+export { IReadByIDProduct } from './IReadByIDProduct'
+export { ICreateProduct } from './ICreateProduct'

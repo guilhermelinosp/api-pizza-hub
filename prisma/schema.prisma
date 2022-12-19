@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               =  env("DATABASE_URL") 
+}
+
+model User {
+  id          String      @id @default(uuid())
+  name        String
+  email       String      @unique
+  password    String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  user_tokens UserToken[]
+
+  @@map("users")
+}
+
+model UserToken {
+  id        String   @id @default(uuid())
+  token     String   @unique @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user_id   String
+  user      User     @relation(fields: [user_id], references: [id])
+
+  @@map("user_tokens")
+}
+
+model Category {
+  id        String    @id @default(uuid())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  product   Product[]
+
+  @@map("categories")
+}
+
+model Product {
+  id          String      @id @default(uuid())
+  name        String
+  price       Float
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  category_id String
+  category    Category    @relation(fields: [category_id], references: [id])
+  OrderItem   Item[]
+
+  @@map("products")
+}
+
+model Order {
+  id        String      @id @default(uuid())
+  table     Int
+  status    Boolean     @default(false)
+  draft     Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  OrderItem Item[]
+
+  @@map("orders")
+}
+
+model Item {
+  id         String   @id @default(uuid())
+  amount     Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  order_id   String
+  product_id String
+  order      Order    @relation(fields: [order_id], references: [id])
+  product    Product  @relation(fields: [product_id], references: [id])
+
+  @@map("items")
+}
