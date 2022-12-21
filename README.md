@@ -18,7 +18,7 @@
 
 ## Technologies used outside the project
 
-- Docker
+- Docker Compose
 - insominia
 - Beekeeper
 
@@ -32,9 +32,8 @@
 - Clone this repository
 
 ```shell
-git clone https://github.com/guilhermelinosx/api-pizza-hub.git
+git clone https://github.com/guilhermelinosp/api-sales.git
 ```
-
 </br>
 
 - Start the Container
@@ -42,14 +41,11 @@ git clone https://github.com/guilhermelinosx/api-pizza-hub.git
 ```shell
 docker compose up --build
 ```
-
 </br>
 
 - Stop the Container
-
 	- To stop the Container click CTRL+C in your terminal and then type
 
 ```shell
 docker ccompose down
 ```
-
