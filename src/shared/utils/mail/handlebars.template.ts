@@ -3,9 +3,7 @@ import fs from 'fs'
 
 interface IParse {
 	file: string
-	variables: {
-		[key: string]: string | number
-	}
+	variables: Record<string, string | number>
 }
 
 export class HandlebarsTemplate {

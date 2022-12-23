@@ -5,9 +5,7 @@ import { HandlebarsTemplate } from './handlebars.template'
 
 interface ITemplates {
 	file: string
-	variables: {
-		[key: string]: string | number
-	}
+	variables: Record<string, string | number>
 }
 
 interface IMailContact {
