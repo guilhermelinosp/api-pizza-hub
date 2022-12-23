@@ -7,7 +7,7 @@
 	"author": "Guilherme Lino <guilhermelinosp@gmail.com>",
 	"scripts": {
 		"start:dev": "nodemon --watch './' --exec 'ts-node --transpile-only src/shared/server/index.ts' -e .",
-		"start:prod": "node dist/shared/server/index.js",
+		"start": "node dist/shared/server/index.js",
 		"prebuild": "rimraf dist",
 		"build": "tsc -p tsconfig.build.json && copyfiles -u 1 \"./src/shared/utils/views/*\" \"./dist\"",
 		"commit": "cz",
