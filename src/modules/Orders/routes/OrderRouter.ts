@@ -9,13 +9,13 @@ const orderController = new OrderController()
 OrderRouter.use(isAuthenticated)
 
 OrderRouter.post(
-  '/',
-  celebrate({
-    [Segments.BODY]: {
-      table: Joi.number().required()
-    }
-  }),
-  orderController.create
+	'/',
+	celebrate({
+		[Segments.BODY]: {
+			table: Joi.number().required()
+		}
+	}),
+	orderController.create
 )
 
 OrderRouter.get('/', orderController.read)
@@ -25,31 +25,31 @@ OrderRouter.get('/readprogress', orderController.readprogress)
 OrderRouter.get('/readfinalized', orderController.readfinalized)
 
 OrderRouter.delete(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  orderController.delete
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	orderController.delete
 )
 
 OrderRouter.put(
-  '/send/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  orderController.send
+	'/send/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	orderController.send
 )
 
 OrderRouter.put(
-  '/finish/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  orderController.finish
+	'/finish/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	orderController.finish
 )

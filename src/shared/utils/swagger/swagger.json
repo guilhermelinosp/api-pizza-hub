@@ -1,1058 +1,1058 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "API Pizza Hub Documentation",
-    "description": "This is a Simple API project",
-    "license": {
-      "name": "MIT",
-      "url": "https://opensource.org/licenses/MIT"
-    }
-  },
-  "servers": [
-    {
-      "description": "Development server",
-      "url": "http://localhost:8080/api/v1"
-    },
-    {
-      "description": "Production server",
-      "url": "https://api-pizza-hub.herokuapp.com/api/v1"
-    }
-  ],
-  "tags": [
-    {
-      "name": "Users"
-    },
-    {
-      "name": "Products"
-    },
-    {
-      "name": "Categories"
-    },
-    {
-      "name": "Orders"
-    },
-    {
-      "name": "Items"
-    }
-  ],
-  "paths": {
-    "/signin": {
-      "post": {
-        "tags": ["Users"],
-        "security": {},
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "signin": {
-                  "type": "object",
-                  "properties": {
-                    "email": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    },
-                    "required": true
-                  }
-                }
-              },
-              "example": {
-                "email": "string",
-                "password": "string"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/signup": {
-      "post": {
-        "tags": ["Users"],
-        "security": {},
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "signup": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    },
-                    "password_confirmation": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "example": {
-                  "name": "string",
-                  "email": "string",
-                  "password": "string",
-                  "password_confirmation": "string"
-                },
-                "required": true
-              }
-            }
-          },
-          "exemples": {
-            "application/json": {
-              "email": "",
-              "password": ""
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/categories": {
-      "post": {
-        "tags": ["Categories"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "category": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "example": {
-                "name": "string"
-              },
-              "required": true
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "get": {
-        "tags": ["Categories"],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/categories/{id}": {
-      "get": {
-        "tags": ["Categories"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "tags": ["Categories"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "category": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "example": {
-                "name": "string"
-              },
-              "required": true
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": ["Categories"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/products": {
-      "post": {
-        "tags": ["Products"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "product": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string"
-                    },
-                    "price": {
-                      "type": "number"
-                    },
-                    "category_id": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "example": {
-                "name": "string",
-                "description": "string",
-                "price": "number",
-                "category_id": "string"
-              },
-              "required": true
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "get": {
-        "tags": ["Products"],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/products/readbycategory": {
-      "get": {
-        "tags": ["Products"],
-        "parameters": [
-          {
-            "name": "category_id",
-            "in": "query",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/products/{id}": {
-      "get": {
-        "tags": ["Products"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "patch": {
-        "tags": ["Products"],
-        "requestBody": {},
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": ["Products"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/orders": {
-      "post": {
-        "tags": ["Orders"],
-        "requestBody": {},
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "get": {
-        "tags": ["Orders"],
-        "requestBody": {},
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/orders/readprogress": {
-      "get": {
-        "tags": ["Orders"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/orders/readfinalized": {
-      "get": {
-        "tags": ["Orders"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/orders/{id}": {
-      "delete": {
-        "tags": ["Orders"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/orders/send/{id}": {
-      "put": {
-        "tags": ["Orders"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/orders/finish/{id}": {
-      "put": {
-        "tags": ["Orders"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/items": {
-      "post": {
-        "tags": ["Items"],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "order_id": {
-                    "type": "string"
-                  },
-                  "product_id": {
-                    "type": "string"
-                  },
-                  "amount": {
-                    "type": "number"
-                  }
-                },
-                "required": ["order_id", "product_id", "amount"],
-                "example": {
-                  "order_id": "string",
-                  "product_id": "string",
-                  "amount": "number"
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "get": {
-        "tags": ["Items"],
-        "requestBody": {},
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/items/{id}": {
-      "delete": {
-        "tags": ["Items"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/items/readbyorder": {
-      "get": {
-        "tags": ["Items"],
-        "parameters": [
-          {
-            "name": "order_id",
-            "in": "query",
-            "required": true,
-            "type": "uuid"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "429": {
-            "description": "Too Many Requests"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
-      }
-    }
-  },
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ]
+	"openapi": "3.0.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "API Pizza Hub Documentation",
+		"description": "This is a Simple API project",
+		"license": {
+			"name": "MIT",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"servers": [
+		{
+			"description": "Development server",
+			"url": "http://localhost:8080/api/v1"
+		},
+		{
+			"description": "Production server",
+			"url": "https://api-pizza-hub.herokuapp.com/api/v1"
+		}
+	],
+	"tags": [
+		{
+			"name": "Users"
+		},
+		{
+			"name": "Products"
+		},
+		{
+			"name": "Categories"
+		},
+		{
+			"name": "Orders"
+		},
+		{
+			"name": "Items"
+		}
+	],
+	"paths": {
+		"/signin": {
+			"post": {
+				"tags": ["Users"],
+				"security": {},
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"signin": {
+									"type": "object",
+									"properties": {
+										"email": {
+											"type": "string"
+										},
+										"password": {
+											"type": "string"
+										},
+										"required": true
+									}
+								}
+							},
+							"example": {
+								"email": "string",
+								"password": "string"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/signup": {
+			"post": {
+				"tags": ["Users"],
+				"security": {},
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"signup": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"email": {
+											"type": "string"
+										},
+										"password": {
+											"type": "string"
+										},
+										"password_confirmation": {
+											"type": "string"
+										}
+									}
+								},
+								"example": {
+									"name": "string",
+									"email": "string",
+									"password": "string",
+									"password_confirmation": "string"
+								},
+								"required": true
+							}
+						}
+					},
+					"exemples": {
+						"application/json": {
+							"email": "",
+							"password": ""
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/categories": {
+			"post": {
+				"tags": ["Categories"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"category": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"example": {
+								"name": "string"
+							},
+							"required": true
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"get": {
+				"tags": ["Categories"],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/categories/{id}": {
+			"get": {
+				"tags": ["Categories"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"put": {
+				"tags": ["Categories"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"category": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"example": {
+								"name": "string"
+							},
+							"required": true
+						}
+					}
+				},
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Categories"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/products": {
+			"post": {
+				"tags": ["Products"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"product": {
+									"type": "object",
+									"properties": {
+										"name": {
+											"type": "string"
+										},
+										"price": {
+											"type": "number"
+										},
+										"category_id": {
+											"type": "string"
+										}
+									}
+								}
+							},
+							"example": {
+								"name": "string",
+								"description": "string",
+								"price": "number",
+								"category_id": "string"
+							},
+							"required": true
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"get": {
+				"tags": ["Products"],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/products/readbycategory": {
+			"get": {
+				"tags": ["Products"],
+				"parameters": [
+					{
+						"name": "category_id",
+						"in": "query",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/products/{id}": {
+			"get": {
+				"tags": ["Products"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"patch": {
+				"tags": ["Products"],
+				"requestBody": {},
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Products"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/orders": {
+			"post": {
+				"tags": ["Orders"],
+				"requestBody": {},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"get": {
+				"tags": ["Orders"],
+				"requestBody": {},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/orders/readprogress": {
+			"get": {
+				"tags": ["Orders"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/orders/readfinalized": {
+			"get": {
+				"tags": ["Orders"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/orders/{id}": {
+			"delete": {
+				"tags": ["Orders"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/orders/send/{id}": {
+			"put": {
+				"tags": ["Orders"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/orders/finish/{id}": {
+			"put": {
+				"tags": ["Orders"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/items": {
+			"post": {
+				"tags": ["Items"],
+				"requestBody": {
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"order_id": {
+										"type": "string"
+									},
+									"product_id": {
+										"type": "string"
+									},
+									"amount": {
+										"type": "number"
+									}
+								},
+								"required": ["order_id", "product_id", "amount"],
+								"example": {
+									"order_id": "string",
+									"product_id": "string",
+									"amount": "number"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			},
+			"get": {
+				"tags": ["Items"],
+				"requestBody": {},
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/items/{id}": {
+			"delete": {
+				"tags": ["Items"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		},
+		"/items/readbyorder": {
+			"get": {
+				"tags": ["Items"],
+				"parameters": [
+					{
+						"name": "order_id",
+						"in": "query",
+						"required": true,
+						"type": "uuid"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"201": {
+						"description": "Created"
+					},
+					"204": {
+						"description": "No Content"
+					},
+					"400": {
+						"description": "Bad Request"
+					},
+					"401": {
+						"description": "Unauthorized"
+					},
+					"404": {
+						"description": "Not Found"
+					},
+					"429": {
+						"description": "Too Many Requests"
+					},
+					"500": {
+						"description": "Internal Server Error"
+					}
+				}
+			}
+		}
+	},
+	"components": {
+		"securitySchemes": {
+			"bearerAuth": {
+				"type": "http",
+				"scheme": "bearer",
+				"bearerFormat": "JWT"
+			}
+		}
+	},
+	"security": [
+		{
+			"bearerAuth": []
+		}
+	]
 }

@@ -11,46 +11,46 @@ CategoryRouter.use(isAuthenticated)
 CategoryRouter.use(isRateLimiter)
 
 CategoryRouter.post(
-  '/',
-  celebrate({
-    [Segments.BODY]: {
-      name: Joi.string().required()
-    }
-  }),
-  categoryController.create
+	'/',
+	celebrate({
+		[Segments.BODY]: {
+			name: Joi.string().required()
+		}
+	}),
+	categoryController.create
 )
 
 CategoryRouter.get('/', categoryController.read)
 
 CategoryRouter.get(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  categoryController.readbyid
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	categoryController.readbyid
 )
 
 CategoryRouter.put(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    },
-    [Segments.BODY]: {
-      name: Joi.string().required()
-    }
-  }),
-  categoryController.update
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		},
+		[Segments.BODY]: {
+			name: Joi.string().required()
+		}
+	}),
+	categoryController.update
 )
 
 CategoryRouter.delete(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  categoryController.delete
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	categoryController.delete
 )

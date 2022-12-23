@@ -1,3 +1,3 @@
 export interface IDeleteOrder {
-  id: string
+	id: string
 }

@@ -16,7 +16,7 @@ router.use('/api/v1/orders', OrderRouter)
 router.use('/api/v1/items', ItemRouter)
 
 router.get('/', (_req, res) => {
-  res.send('API is running')
+	res.send('API is running')
 })
 
 router.use('/api/v1/docs', swaggerUi.serve)

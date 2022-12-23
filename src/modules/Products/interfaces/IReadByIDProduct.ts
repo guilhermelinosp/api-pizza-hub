@@ -1,3 +1,3 @@
 export interface IReadByIDProduct {
-  id: string
+	id: string
 }

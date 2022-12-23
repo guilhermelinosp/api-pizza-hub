@@ -1,3 +1,3 @@
 export interface IReadByIDCategory {
-  id: string
+	id: string
 }

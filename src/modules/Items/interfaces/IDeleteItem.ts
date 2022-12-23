@@ -1,3 +1,3 @@
 export interface IDeleteItem {
-  id: string
+	id: string
 }

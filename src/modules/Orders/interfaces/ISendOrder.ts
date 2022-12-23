@@ -1,3 +1,3 @@
 export interface ISendOrder {
-  id: string
+	id: string
 }

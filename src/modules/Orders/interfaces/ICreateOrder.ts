@@ -1,3 +1,3 @@
 export interface ICreateOrder {
-  table: number
+	table: number
 }

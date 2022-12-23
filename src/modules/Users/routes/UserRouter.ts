@@ -6,25 +6,25 @@ export const UserRouter = Router()
 const userController = new UserController()
 
 UserRouter.post(
-  '/signup',
-  celebrate({
-    [Segments.BODY]: {
-      name: Joi.string().required(),
-      email: Joi.string().email().required(),
-      password: Joi.string().required(),
-      password_confirmation: Joi.string().required().valid(Joi.ref('password'))
-    }
-  }),
-  userController.signup
+	'/signup',
+	celebrate({
+		[Segments.BODY]: {
+			name: Joi.string().required(),
+			email: Joi.string().email().required(),
+			password: Joi.string().required(),
+			password_confirmation: Joi.string().required().valid(Joi.ref('password'))
+		}
+	}),
+	userController.signup
 )
 
 UserRouter.post(
-  '/signin',
-  celebrate({
-    [Segments.BODY]: {
-      email: Joi.string().email().required(),
-      password: Joi.string().required()
-    }
-  }),
-  userController.signin
+	'/signin',
+	celebrate({
+		[Segments.BODY]: {
+			email: Joi.string().email().required(),
+			password: Joi.string().required()
+		}
+	}),
+	userController.signin
 )

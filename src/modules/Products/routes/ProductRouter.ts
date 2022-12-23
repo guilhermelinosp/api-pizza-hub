@@ -11,70 +11,70 @@ ProductRouter.use(isAuthenticated)
 ProductRouter.use(isRateLimiter)
 
 ProductRouter.post(
-  '/',
-  celebrate({
-    [Segments.BODY]: {
-      name: Joi.string().required(),
-      price: Joi.number().required(),
-      category_id: Joi.string().required()
-    }
-  }),
-  productController.create
+	'/',
+	celebrate({
+		[Segments.BODY]: {
+			name: Joi.string().required(),
+			price: Joi.number().required(),
+			category_id: Joi.string().required()
+		}
+	}),
+	productController.create
 )
 
 ProductRouter.get('/', productController.read)
 
 ProductRouter.get(
-  '/readbycategory',
-  celebrate({
-    [Segments.QUERY]: {
-      category_id: Joi.string().required()
-    }
-  }),
-  productController.readbycategory
+	'/readbycategory',
+	celebrate({
+		[Segments.QUERY]: {
+			category_id: Joi.string().required()
+		}
+	}),
+	productController.readbycategory
 )
 
 ProductRouter.get(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  productController.readbyid
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	productController.readbyid
 )
 
 ProductRouter.get(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  productController.read
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	productController.read
 )
 
 ProductRouter.patch(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    },
-    [Segments.BODY]: {
-      name: Joi.string().optional(),
-      price: Joi.number().optional(),
-      category_id: Joi.string().optional()
-    }
-  }),
-  productController.update
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		},
+		[Segments.BODY]: {
+			name: Joi.string().optional(),
+			price: Joi.number().optional(),
+			category_id: Joi.string().optional()
+		}
+	}),
+	productController.update
 )
 
 ProductRouter.delete(
-  '/:id',
-  celebrate({
-    [Segments.PARAMS]: {
-      id: Joi.string().uuid().required()
-    }
-  }),
-  productController.delete
+	'/:id',
+	celebrate({
+		[Segments.PARAMS]: {
+			id: Joi.string().uuid().required()
+		}
+	}),
+	productController.delete
 )

@@ -1,3 +1,3 @@
 export interface IFinishOrder {
-  id: string
+	id: string
 }
