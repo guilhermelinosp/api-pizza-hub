@@ -6,8 +6,6 @@
 <p>🚧 It is in Development 🚧</p>
 </div>
 
-</br>
-
 ## Technologies used in the project
 
 - Typescript
