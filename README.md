@@ -16,17 +16,6 @@
 - Prisma
 - Swagger
 
-## Technologies used outside the project
-
-- Docker Compose
-- insominia
-- Beekeeper
-
-## Technologies used to deploy
-
-- Heroku | API
-- Railway | Database
-
 ## How to run the project
 
 - Clone this repository
